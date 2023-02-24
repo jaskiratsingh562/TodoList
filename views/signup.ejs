@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link type="image/png" sizes="16x16" rel="icon" href="icons8-todo-list-16.png">
+</head>
+<body>
+    <div id="dashboard">
+        <div id="logo">
+            <img src="https://img.icons8.com/ios-filled/50/000000/to-do.png"/>
+    
+            <!-- <img src="https://img.icons8.com/nolan/64/tasklist.png"/> -->
+        </div>
+        
+        <div class="dashboard-items hov">
+            <h1>TODO LIST</h1>
+        </div>
+        <div class="dashboard-items">
+            <h2> 
+                <a href="./">Sign in</a>
+            </h2>
+        </div>
+    </div>
+    <div id="main-body">
+        <div id="sign-page">
+            <div id="text">
+                <h1>Sign Up</h1>
+            </div>
+            <form action="/create-user" method="POST">
+                <div class="container">
+                    <label for="uname"><b> User Name</b></label>
+                    <input type="text" placeholder="Enter User Name" name="uname" required>
+                    <br>
+                    <label for="uemail"><b>Email</b></label>
+                    <input type="email" placeholder="Enter Email" name="uemail" required>
+                    <br>
+                    <label for="psw"><b>Password</b></label>
+                    <input id="pass" type="password" placeholder="Enter Password" name="psw" onkeyup="checkPass(); return false;" required>
+                    <br>
+                    <div id="error-nwl"></div>
+                    <button id="signup" type="submit">Sign Up</button>
+                    <p> 
+                        Already a member?
+                        <a href="./">Sign In</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script>
+    function checkPass()
+    {
+        var pass1 = document.getElementById('pass');
+        var message = document.getElementById('error-nwl');
+        var goodColor = "#66cc66";
+        var badColor = "#ff6666";
+        var b = document.getElementById('signup');
+        if(pass1.value.length > 8 && pass1.value.length <= 16)
+        {
+            pass1.style.backgroundColor = goodColor;
+            message.style.color = goodColor;
+            message.innerHTML = "Good length"
+            b.disabled = false;
+            b.style.opacity=1;
+        }
+        else
+        {
+            pass1.style.backgroundColor = badColor;
+            message.style.color = badColor;
+            message.style.fontSize = "12px";
+            message.innerHTML = "Enter Password between length 8 and 16"
+            b.disabled = true;
+            b.style.opacity=.80;
+            return;
+        }
+    } 
+</script>
+</html>
